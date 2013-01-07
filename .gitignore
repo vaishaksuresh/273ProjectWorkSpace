@@ -1,0 +1,10 @@
+.DS_Store
+.metadata/*
+Servers/*
+
+RemoteSystemsTempFiles/.project
+*.class
+# Package Files #
+*.jar
+*.war
+*.ear

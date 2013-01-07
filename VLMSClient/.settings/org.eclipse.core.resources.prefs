@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/com/vlms/sjsu/entity/Bill.java=UTF-8
+encoding//src/com/vlms/sjsu/entity/Movie.java=UTF-8
+encoding//src/com/vlms/sjsu/entity/User.java=UTF-8
+encoding//src/com/vlms/sjsu/service/Service.java=UTF-8
+encoding//src/com/vlms/sjsu/service/ServiceService.java=UTF-8
+encoding//src/com/vlms/sjsu/service/ServiceServiceLocator.java=UTF-8
+encoding//src/com/vlms/sjsu/service/ServiceSoapBindingStub.java=UTF-8

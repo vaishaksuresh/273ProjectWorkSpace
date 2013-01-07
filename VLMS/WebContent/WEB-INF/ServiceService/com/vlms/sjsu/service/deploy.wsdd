@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServiceService WSDL service -->
+
+  <service name="Service" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.sjsu.vlms.com"/>
+      <parameter name="wsdlServiceElement" value="ServiceService"/>
+      <parameter name="schemaQualified" value="http://entity.sjsu.vlms.com,http://service.sjsu.vlms.com"/>
+      <parameter name="wsdlServicePort" value="Service"/>
+      <parameter name="className" value="com.vlms.sjsu.service.Service"/>
+      <parameter name="wsdlPortType" value="Service"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="createUpdateUser" qname="operNS:createUpdateUser" returnQName="retNS:createUpdateUserReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://entity.sjsu.vlms.com" qname="pns:objUser" type="tns:User"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://entity.sjsu.vlms.com" name="signIn" qname="operNS:signIn" returnQName="retNS:signInReturn" returnType="rtns:User" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:strUsername" type="tns:string"/>
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:mdPassword" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://entity.sjsu.vlms.com" name="listAllMovies" qname="operNS:listAllMovies" returnQName="retNS:listAllMoviesReturn" returnType="rtns:Movie" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:count" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://entity.sjsu.vlms.com" name="findUser" qname="operNS:findUser" returnQName="retNS:findUserReturn" returnType="rtns:User" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://entity.sjsu.vlms.com" qname="pns:objUser" type="tns:User"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://entity.sjsu.vlms.com" name="findMovie" qname="operNS:findMovie" returnQName="retNS:findMovieReturn" returnType="rtns:Movie" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://entity.sjsu.vlms.com" qname="pns:objMovie" type="tns:Movie"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://entity.sjsu.vlms.com" name="generateBill" qname="operNS:generateBill" returnQName="retNS:generateBillReturn" returnType="rtns:Bill" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:strUserId" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="createMovie" qname="operNS:createMovie" returnQName="retNS:createMovieReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://entity.sjsu.vlms.com" qname="pns:objMovie" type="tns:Movie"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="updateMovie" qname="operNS:updateMovie" returnQName="retNS:updateMovieReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://entity.sjsu.vlms.com" qname="pns:newMovieObj" type="tns:Movie"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deleteMovie" qname="operNS:deleteMovie" returnQName="retNS:deleteMovieReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:strMovieId" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="issueMovie" qname="operNS:issueMovie" returnQName="retNS:issueMovieReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:strMovieId" type="tns:string"/>
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://entity.sjsu.vlms.com" qname="pns:objUser" type="tns:User"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://entity.sjsu.vlms.com" name="getUserDetails" qname="operNS:getUserDetails" returnQName="retNS:getUserDetailsReturn" returnType="rtns:User" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:strUserId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://entity.sjsu.vlms.com" name="getUserMovieslist" qname="operNS:getUserMovieslist" returnQName="retNS:getUserMovieslistReturn" returnType="rtns:Movie" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:strUserId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://entity.sjsu.vlms.com" name="getMovieDetails" qname="operNS:getMovieDetails" returnQName="retNS:getMovieDetailsReturn" returnType="rtns:Movie" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:strMovieId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://entity.sjsu.vlms.com" name="movierenteduserlist" qname="operNS:movierenteduserlist" returnQName="retNS:movierenteduserlistReturn" returnType="rtns:User" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:strMovieId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="returnMovie" qname="operNS:returnMovie" returnQName="retNS:returnMovieReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:strMovieId" type="tns:int"/>
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:strUserId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://entity.sjsu.vlms.com" name="listAllUsers" qname="operNS:listAllUsers" returnQName="retNS:listAllUsersReturn" returnType="rtns:User" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:noOfRows" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deleteUser" qname="operNS:deleteUser" returnQName="retNS:deleteUserReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:strUserID" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.sjsu.vlms.com" xmlns:retNS="http://service.sjsu.vlms.com" xmlns:rtns="http://entity.sjsu.vlms.com" name="showMoviesToReturn" qname="operNS:showMoviesToReturn" returnQName="retNS:showMoviesToReturnReturn" returnType="rtns:Movie" soapAction="">
+        <parameter xmlns:pns="http://service.sjsu.vlms.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:strUserID" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="generateBill issueMovie createUpdateUser getUserDetails listAllMovies findMovie getUserMovieslist returnMovie updateMovie movierenteduserlist showMoviesToReturn createMovie listAllUsers findUser getMovieDetails deleteUser signIn deleteMovie"/>
+
+      <typeMapping xmlns:ns="http://entity.sjsu.vlms.com" qname="ns:Movie" type="java:com.vlms.sjsu.entity.Movie" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://entity.sjsu.vlms.com" qname="ns:User" type="java:com.vlms.sjsu.entity.User" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://entity.sjsu.vlms.com" qname="ns:Bill" type="java:com.vlms.sjsu.entity.Bill" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

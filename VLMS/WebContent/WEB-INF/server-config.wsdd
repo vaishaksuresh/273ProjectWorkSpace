@@ -1,0 +1,122 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="/Users/vaishaksuresh/Documents/273ProjectWorkSpace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/VLMS/WEB-INF/attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="Service" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="createUpdateUser" qname="ns1:createUpdateUser" returnQName="ns1:createUpdateUserReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://service.sjsu.vlms.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns3:parameter qname="ns1:objUser" type="ns2:User" xmlns:ns2="http://entity.sjsu.vlms.com" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+  </ns2:operation>
+  <ns1:operation name="signIn" qname="ns3:signIn" returnQName="ns3:signInReturn" returnType="ns4:User" soapAction="" xmlns:ns3="http://service.sjsu.vlms.com" xmlns:ns4="http://entity.sjsu.vlms.com">
+   <ns1:parameter qname="ns3:strUsername" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns3:mdPassword" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="listAllMovies" qname="ns5:listAllMovies" returnQName="ns5:listAllMoviesReturn" returnType="ns6:Movie" soapAction="" xmlns:ns5="http://service.sjsu.vlms.com" xmlns:ns6="http://entity.sjsu.vlms.com">
+   <ns1:parameter qname="ns5:count" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="findUser" qname="ns7:findUser" returnQName="ns7:findUserReturn" returnType="ns8:User" soapAction="" xmlns:ns7="http://service.sjsu.vlms.com" xmlns:ns8="http://entity.sjsu.vlms.com">
+   <ns1:parameter qname="ns7:objUser" type="ns8:User"/>
+  </ns1:operation>
+  <ns1:operation name="findMovie" qname="ns9:findMovie" returnQName="ns9:findMovieReturn" returnType="ns10:Movie" soapAction="" xmlns:ns10="http://entity.sjsu.vlms.com" xmlns:ns9="http://service.sjsu.vlms.com">
+   <ns1:parameter qname="ns9:objMovie" type="ns10:Movie"/>
+  </ns1:operation>
+  <ns1:operation name="generateBill" qname="ns11:generateBill" returnQName="ns11:generateBillReturn" returnType="ns12:Bill" soapAction="" xmlns:ns11="http://service.sjsu.vlms.com" xmlns:ns12="http://entity.sjsu.vlms.com">
+   <ns1:parameter qname="ns11:strUserId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="createMovie" qname="ns13:createMovie" returnQName="ns13:createMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://service.sjsu.vlms.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:objMovie" type="ns14:Movie" xmlns:ns14="http://entity.sjsu.vlms.com"/>
+  </ns1:operation>
+  <ns1:operation name="updateMovie" qname="ns15:updateMovie" returnQName="ns15:updateMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://service.sjsu.vlms.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns15:newMovieObj" type="ns16:Movie" xmlns:ns16="http://entity.sjsu.vlms.com"/>
+  </ns1:operation>
+  <ns1:operation name="deleteMovie" qname="ns17:deleteMovie" returnQName="ns17:deleteMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns17="http://service.sjsu.vlms.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns17:strMovieId" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="issueMovie" qname="ns18:issueMovie" returnQName="ns18:issueMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns18="http://service.sjsu.vlms.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns18:strMovieId" type="xsd:string"/>
+   <ns1:parameter qname="ns18:objUser" type="ns19:User" xmlns:ns19="http://entity.sjsu.vlms.com"/>
+  </ns1:operation>
+  <ns1:operation name="getUserDetails" qname="ns20:getUserDetails" returnQName="ns20:getUserDetailsReturn" returnType="ns21:User" soapAction="" xmlns:ns20="http://service.sjsu.vlms.com" xmlns:ns21="http://entity.sjsu.vlms.com">
+   <ns1:parameter qname="ns20:strUserId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getUserMovieslist" qname="ns22:getUserMovieslist" returnQName="ns22:getUserMovieslistReturn" returnType="ns23:Movie" soapAction="" xmlns:ns22="http://service.sjsu.vlms.com" xmlns:ns23="http://entity.sjsu.vlms.com">
+   <ns1:parameter qname="ns22:strUserId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getMovieDetails" qname="ns24:getMovieDetails" returnQName="ns24:getMovieDetailsReturn" returnType="ns25:Movie" soapAction="" xmlns:ns24="http://service.sjsu.vlms.com" xmlns:ns25="http://entity.sjsu.vlms.com">
+   <ns1:parameter qname="ns24:strMovieId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="movierenteduserlist" qname="ns26:movierenteduserlist" returnQName="ns26:movierenteduserlistReturn" returnType="ns27:User" soapAction="" xmlns:ns26="http://service.sjsu.vlms.com" xmlns:ns27="http://entity.sjsu.vlms.com">
+   <ns1:parameter qname="ns26:strMovieId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="returnMovie" qname="ns28:returnMovie" returnQName="ns28:returnMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns28="http://service.sjsu.vlms.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns28:strMovieId" type="xsd:int"/>
+   <ns1:parameter qname="ns28:strUserId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="listAllUsers" qname="ns29:listAllUsers" returnQName="ns29:listAllUsersReturn" returnType="ns30:User" soapAction="" xmlns:ns29="http://service.sjsu.vlms.com" xmlns:ns30="http://entity.sjsu.vlms.com">
+   <ns1:parameter qname="ns29:noOfRows" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="deleteUser" qname="ns31:deleteUser" returnQName="ns31:deleteUserReturn" returnType="xsd:string" soapAction="" xmlns:ns31="http://service.sjsu.vlms.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns31:strUserID" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="showMoviesToReturn" qname="ns32:showMoviesToReturn" returnQName="ns32:showMoviesToReturnReturn" returnType="ns33:Movie" soapAction="" xmlns:ns32="http://service.sjsu.vlms.com" xmlns:ns33="http://entity.sjsu.vlms.com">
+   <ns1:parameter qname="ns32:strUserID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="generateBill issueMovie createUpdateUser getUserDetails listAllMovies findMovie getUserMovieslist returnMovie updateMovie movierenteduserlist showMoviesToReturn createMovie listAllUsers findUser getMovieDetails deleteUser signIn deleteMovie"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Service"/>
+  <ns1:parameter name="className" value="com.vlms.sjsu.service.Service"/>
+  <ns1:parameter name="wsdlServicePort" value="Service"/>
+  <ns1:parameter name="schemaQualified" value="http://entity.sjsu.vlms.com,http://service.sjsu.vlms.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://service.sjsu.vlms.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="ServiceService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns34:Movie" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.vlms.sjsu.entity.Movie" xmlns:ns34="http://entity.sjsu.vlms.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns35:User" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.vlms.sjsu.entity.User" xmlns:ns35="http://entity.sjsu.vlms.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns36:Bill" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.vlms.sjsu.entity.Bill" xmlns:ns36="http://entity.sjsu.vlms.com"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

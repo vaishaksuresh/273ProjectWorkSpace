@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<!-- Specify a JDBC datasource -->
+	<Resource name="jdbc/vlms" auth="Container" type="javax.sql.DataSource"
+		username="vlmsadmin" password="vlmspassword" driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/vlms" initialSize="10" maxActive="100"
+		maxIdle="50" minIdle="10" />
+
+</Context>
